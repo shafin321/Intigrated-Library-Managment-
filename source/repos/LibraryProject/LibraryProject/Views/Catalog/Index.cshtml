@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LibraryProject.ViewModel.AssetIndexListingModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="assets">
+    <h3>Library Catalog</h3>
+    <div id="assetsTable">
+        <table class="table table-condensed" id="catalogIndexTable">
+            <thead>
+                <tr>
+                    
+                    <th>Title</th>
+                    <th>DewerCallNumber</th>
+                    <th>Location</th>
+                    <th>AuthorOrDirector</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in Model)
+                {
+                <tr class="assetRow">
+                    <td class="">
+                        <div>
+                            <a asp-controller="Catalog" asp-action="Details" asp-route-id="@asset.Id">
+                                <img src="@asset.ImageUrl" class="imageCell" />
+                            </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="">@asset.Title</td>
+                    <td class="">@asset.DeweyCallNumber</td>
+                    <td class="">@asset.Location.Name</td>
+                    <td class="">@asset.AuthorOrDirector</td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
